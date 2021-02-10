@@ -14,7 +14,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <div className={styles['foo-tsx']}>{state.name}</div>
+        <div class={styles['foo-tsx']}>{state.name}</div>
       </>
     );
   },
