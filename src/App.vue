@@ -88,5 +88,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.1);
 }
 </style>
