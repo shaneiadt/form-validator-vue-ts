@@ -74,5 +74,6 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Sen, sans-serif;
+  letter-spacing: 2px;
 }
 </style>
