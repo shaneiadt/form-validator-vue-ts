@@ -80,4 +80,13 @@ body {
   justify-content: center;
   background: #c9cde3;
 }
+
+.container {
+  width: 480px;
+  height: 630px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>
