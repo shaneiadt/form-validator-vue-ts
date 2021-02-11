@@ -113,5 +113,48 @@ input {
   border-radius: 5px;
   outline: none;
   box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+button {
+  cursor: pointer;
+  color: #fff;
+  background: black;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  font-family: Sen, sans-serif;
+  font-size: 20px;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  outline: none;
+}
+
+button:hover {
+  filter: brightness(200%);
+  background: rgb(32, 32, 32);
+}
+
+button:focus {
+  outline: none;
+}
+
+.message-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  color: black;
 }
 </style>
