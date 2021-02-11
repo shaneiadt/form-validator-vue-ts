@@ -64,7 +64,7 @@ export default defineComponent({
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sen&display=swap");
 
 html {
   box-sizing: border-box;
@@ -90,5 +90,27 @@ body {
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  width: 90%;
+}
+
+.form-group {
+  height: 65px;
+}
+
+label {
+  position: relative;
+  bottom: 3px;
+}
+
+input {
+  width: 100%;
+  height: 34px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
 }
 </style>
