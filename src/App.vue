@@ -64,6 +64,8 @@ export default defineComponent({
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+
 html {
   box-sizing: border-box;
 }
@@ -71,5 +73,6 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: Sen, sans-serif;
 }
 </style>
