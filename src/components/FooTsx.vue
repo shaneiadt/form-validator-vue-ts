@@ -14,7 +14,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <div className="foo-tsx-vue">{state.name}</div>
+        <div class="foo-tsx-vue">{state.name}</div>
       </>
     );
   },
