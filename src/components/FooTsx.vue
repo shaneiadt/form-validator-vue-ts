@@ -22,7 +22,6 @@ export default defineComponent({
 </script>
 
 <style lang="css">
-/* unsupport scoped css in vue with tsx, jsx*/
 .foo-tsx-vue {
   color: green;
 }
