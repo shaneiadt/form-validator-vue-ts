@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Form />
     <h1>Sign Up Today</h1>
     <form id="form">
       <div class="form-group">
@@ -36,10 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import FooTsxVue from "./components/FooTsx.vue";
-import FooTsx from "./components/Foo";
-import BarJsxVue from "./components/BarJsx.vue";
-import BarJsx from "./components/Bar";
+import Form from './components/Form/Form.vue';
 
 interface State {
   message: string;
@@ -47,15 +45,13 @@ interface State {
 
 export default defineComponent({
   components: {
-    FooTsxVue,
-    FooTsx,
-    BarJsxVue,
-    BarJsx,
+    Form
   },
   setup() {
     const state = reactive({
       message: "Vue Form Validator",
     });
+    
     return {
       state,
     };
