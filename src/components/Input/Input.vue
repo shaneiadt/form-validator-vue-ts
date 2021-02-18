@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
-    <label for="name">Full Name - {{label}}</label>
-    <input type="text" id="name" placeholder="Full Name" />
+    <label :for="id">{{ label }}</label>
+    <input :type="type" :id="id" :placeholder="placeholder" />
   </div>
 </template>
 
@@ -10,11 +10,35 @@ import { defineComponent, toRef } from "vue";
 
 export default defineComponent({
   name: "Input",
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: false,
+    },
+    placeholder: {
+      type: String,
+      required: false,
+    },
+  },
   setup(props) {
     const label = toRef(props, "label");
-    console.log(label.value);
+    const id = toRef(props, "id");
+    const type = toRef(props, "type") || "text";
+    const placeholder = props?.placeholder ? toRef(props, "placeholder") : label.value;
+
     return {
       label,
+      id,
+      type,
+      placeholder,
     };
   },
 });

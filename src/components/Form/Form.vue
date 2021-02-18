@@ -1,26 +1,11 @@
 <template>
   <form id="form">
-    <Input :label="'Full Name'" :id="'name'" />
-    <div class="form-group">
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" placeholder="555-555-555" />
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="email@address.com" />
-    </div>
-    <div class="form-group">
-      <label for="website">Website URL</label>
-      <input type="url" id="website" placeholder="https://www.website.com" />
-    </div>
-    <div class="form-group">
-      <label for="password1">Password</label>
-      <input type="password" id="password1" placeholder="Create Password" />
-    </div>
-    <div class="form-group">
-      <label for="password2">Confirm Password</label>
-      <input type="password" id="password2" placeholder="Confirm Password" />
-    </div>
+    <Input label="Full Name" id="name" />
+    <Input label="Phone" id="phone" type="tel" placeholder="666-666-666" />
+    <Input label="Email" id="email" type="email" placeholder="email@address.com" />
+    <Input label="Website URL" id="website" type="url" placeholder="https://www.website.com" />
+    <Input label="Password" id="password1" type="password" placeholder="Create Password" />
+    <Input label="Password" id="password2" type="password" placeholder="Confirm Password" />
     <button type="submit">Register</button>
   </form>
   <div class="message-container">
