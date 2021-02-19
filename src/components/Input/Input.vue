@@ -5,34 +5,25 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, toRef } from "vue";
+<script lang="ts">
+import { defineComponent, PropType, toRef } from "vue";
+import type { Field } from "../../interfaces";
 
 export default defineComponent({
   name: "Input",
   props: {
-    label: {
-      type: String,
+    field: {
+      type: Object as PropType<Field>,
       required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    type: {
-      type: String,
-      required: false,
-    },
-    placeholder: {
-      type: String,
-      required: false,
     },
   },
   setup(props) {
-    const label = toRef(props, "label");
-    const id = toRef(props, "id");
-    const type = toRef(props, "type") || "text";
-    const placeholder = props?.placeholder ? toRef(props, "placeholder") : label.value;
+    const label = toRef(props.field, "label");
+    const id = toRef(props.field, "id");
+    const type = toRef(props.field, "type") || "text";
+    const placeholder = props.field?.placeholder
+      ? toRef(props.field, "placeholder")
+      : label.value;
 
     return {
       label,

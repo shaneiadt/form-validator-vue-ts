@@ -1,11 +1,10 @@
 <template>
   <form id="form">
-    <Input label="Full Name" id="name" />
-    <Input label="Phone" id="phone" type="tel" placeholder="666-666-666" />
-    <Input label="Email" id="email" type="email" placeholder="email@address.com" />
-    <Input label="Website URL" id="website" type="url" placeholder="https://www.website.com" />
-    <Input label="Password" id="password1" type="password" placeholder="Create Password" />
-    <Input label="Password" id="password2" type="password" placeholder="Confirm Password" />
+    <Input
+      v-for="(field, i) in state.fields"
+      :field="field"
+      :key="i"
+    />
     <button type="submit">Register</button>
   </form>
   <div class="message-container">
@@ -15,10 +14,11 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
+import type { Field } from "../../interfaces";
 import Input from "../Input/Input.vue";
 
 interface State {
-  name: string;
+  fields: Field[];
 }
 
 export default defineComponent({
@@ -28,7 +28,42 @@ export default defineComponent({
   },
   setup() {
     const state = reactive<State>({
-      name: "Form",
+      fields: [
+        {
+          label: "Full Name",
+          id: "name",
+        },
+        {
+          label: "Phone",
+          id: "phone",
+          type: "tel",
+          placeholder: "777-777-777",
+        },
+        {
+          label: "Email",
+          id: "email",
+          type: "email",
+          placeholder: "email@address.com",
+        },
+        {
+          label: "Website URL",
+          id: "website",
+          type: "url",
+          placeholder: "https://www.website.com",
+        },
+        {
+          label: "Password",
+          id: "password1",
+          type: "password",
+          placeholder: "Create Password",
+        },
+        {
+          label: "Password",
+          id: "password2",
+          type: "password",
+          placeholder: "Confirm Password",
+        },
+      ],
     });
 
     return {
