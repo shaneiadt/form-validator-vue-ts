@@ -1,10 +1,6 @@
 <template>
   <form id="form">
-    <Input
-      v-for="(field, i) in state.fields"
-      :field="field"
-      :key="i"
-    />
+    <Input v-for="(field, i) in state.fields" :field="field" :key="i" />
     <button type="submit">Register</button>
   </form>
   <div class="message-container">
@@ -32,36 +28,78 @@ export default defineComponent({
         {
           label: "Full Name",
           id: "name",
+          validation: {
+            html: [
+              {
+                attribute: "required",
+              },
+            ],
+          },
         },
         {
           label: "Phone",
           id: "phone",
           type: "tel",
           placeholder: "777-777-777",
+          validation: {
+            html: [
+              {
+                attribute: "required",
+              },
+            ],
+          },
         },
         {
           label: "Email",
           id: "email",
           type: "email",
           placeholder: "email@address.com",
+          validation: {
+            html: [
+              {
+                attribute: "required",
+              },
+            ],
+          },
         },
         {
           label: "Website URL",
           id: "website",
           type: "url",
           placeholder: "https://www.website.com",
+          validation: {
+            html: [
+              {
+                attribute: "required",
+              },
+            ],
+          },
         },
         {
           label: "Password",
           id: "password1",
           type: "password",
           placeholder: "Create Password",
+          validation: {
+            html: [
+              {
+                attribute: "required",
+              },
+            ],
+          },
         },
         {
           label: "Password",
           id: "password2",
           type: "password",
           placeholder: "Confirm Password",
+          validation: {
+            html: [
+              {
+                attribute: "required",
+              },
+            ],
+          },
         },
       ],
     });

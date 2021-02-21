@@ -1,12 +1,12 @@
 <template>
   <div class="form-group">
     <label :for="id">{{ label }}</label>
-    <input :type="type" :id="id" :placeholder="placeholder" />
+    <input ref="el" :type="type" :id="id" :placeholder="placeholder" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRef } from "vue";
+import { defineComponent, PropType, toRef, ref, onMounted } from "vue";
 import type { Field } from "../../interfaces";
 
 export default defineComponent({
@@ -25,11 +25,34 @@ export default defineComponent({
       ? toRef(props.field, "placeholder")
       : label.value;
 
+    const htmlValidation = props.field.validation
+      ? toRef(props.field.validation, "html")
+      : null;
+
+    const el = ref(null);
+
+    onMounted(() => {
+      if (htmlValidation) {
+        for (const validation of htmlValidation.value) {
+          const element = (el.value as unknown) as HTMLInputElement;
+
+          if (element) {
+            element.setAttribute(
+              validation.attribute,
+              validation.value ? validation.value : validation.attribute
+            );
+          }
+        }
+      }
+    });
+
     return {
+      el,
       label,
       id,
       type,
       placeholder,
+      htmlValidation,
     };
   },
 });

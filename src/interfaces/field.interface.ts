@@ -3,4 +3,13 @@ export interface Field {
     id: string;
     type?: string;
     placeholder?: string;
+    validation?: {
+        html: [
+            {
+                attribute: string,
+                value?: string
+            }
+        ],
+        validate?: () => boolean
+    };
 }
