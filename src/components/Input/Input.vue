@@ -44,6 +44,12 @@ export default defineComponent({
           }
         }
       }
+
+      if (props.field?.title) {
+        const element = (el.value as unknown) as HTMLInputElement;
+
+        if (element) element.setAttribute("title", props.field.title);
+      }
     });
 
     return {

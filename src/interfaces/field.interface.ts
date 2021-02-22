@@ -1,15 +1,16 @@
 export interface Field {
     label: string;
     id: string;
+    title?: string;
     type?: string;
     placeholder?: string;
     validation?: {
-        html: [
-            {
-                attribute: string,
-                value?: string
-            }
-        ],
+        html: HTMLAttribute[],
         validate?: () => boolean
     };
+}
+
+interface HTMLAttribute {
+    attribute: string,
+    value?: string
 }

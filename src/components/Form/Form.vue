@@ -33,6 +33,14 @@ export default defineComponent({
               {
                 attribute: "required",
               },
+              {
+                attribute: "minlength",
+                value: "3",
+              },
+              {
+                attribute: "maxlength",
+                value: "100",
+              },
             ],
           },
         },
@@ -45,6 +53,10 @@ export default defineComponent({
             html: [
               {
                 attribute: "required",
+              },
+              {
+                attribute: "pattern",
+                value: "[0-9]{3}-[0-9]{3}-[0-9]{3}",
               },
             ],
           },
@@ -79,11 +91,16 @@ export default defineComponent({
           label: "Password",
           id: "password1",
           type: "password",
-          placeholder: "Create Password",
+          title: "Please include at least 1 uppercase character, 1 lowercase character & 1 number",
+          placeholder: "Create Password (Min. 8 Chars)",
           validation: {
             html: [
               {
                 attribute: "required",
+              },
+              {
+                attribute: "pattern",
+                value: "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
               },
             ],
           },
@@ -97,6 +114,10 @@ export default defineComponent({
             html: [
               {
                 attribute: "required",
+              },
+              {
+                attribute: "pattern",
+                value: "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
               },
             ],
           },
