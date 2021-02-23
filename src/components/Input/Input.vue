@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="id">{{ label }}</label>
-    <input ref="el" :type="type" :id="id" :placeholder="placeholder" />
+    <input ref="el" :type="type" v-model="value" :id="id" :placeholder="placeholder" />
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const value = toRef(props.field, "value");
     const label = toRef(props.field, "label");
     const id = toRef(props.field, "id");
     const type = toRef(props.field, "type") || "text";
@@ -54,6 +55,7 @@ export default defineComponent({
 
     return {
       el,
+      value,
       label,
       id,
       type,

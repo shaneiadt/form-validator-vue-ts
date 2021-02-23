@@ -1,5 +1,5 @@
 <template>
-  <form id="form">
+  <form id="form" @submit="submit">
     <Input v-for="(field, i) in state.fields" :field="field" :key="i" />
     <button type="submit">Register</button>
   </form>
@@ -12,6 +12,7 @@
 import { defineComponent, reactive } from "vue";
 import type { Field } from "../../interfaces";
 import Input from "../Input/Input.vue";
+import fields from "./form.data";
 
 interface State {
   fields: Field[];
@@ -24,109 +25,17 @@ export default defineComponent({
   },
   setup() {
     const state = reactive<State>({
-      fields: [
-        {
-          label: "Full Name",
-          id: "name",
-          validation: {
-            html: [
-              {
-                attribute: "required",
-              },
-              {
-                attribute: "minlength",
-                value: "3",
-              },
-              {
-                attribute: "maxlength",
-                value: "100",
-              },
-            ],
-          },
-        },
-        {
-          label: "Phone",
-          id: "phone",
-          type: "tel",
-          placeholder: "777-777-777",
-          validation: {
-            html: [
-              {
-                attribute: "required",
-              },
-              {
-                attribute: "pattern",
-                value: "[0-9]{3}-[0-9]{3}-[0-9]{3}",
-              },
-            ],
-          },
-        },
-        {
-          label: "Email",
-          id: "email",
-          type: "email",
-          placeholder: "email@address.com",
-          validation: {
-            html: [
-              {
-                attribute: "required",
-              },
-            ],
-          },
-        },
-        {
-          label: "Website URL",
-          id: "website",
-          type: "url",
-          placeholder: "https://www.website.com",
-          validation: {
-            html: [
-              {
-                attribute: "required",
-              },
-            ],
-          },
-        },
-        {
-          label: "Password",
-          id: "password1",
-          type: "password",
-          title: "Please include at least 1 uppercase character, 1 lowercase character & 1 number",
-          placeholder: "Create Password (Min. 8 Chars)",
-          validation: {
-            html: [
-              {
-                attribute: "required",
-              },
-              {
-                attribute: "pattern",
-                value: "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
-              },
-            ],
-          },
-        },
-        {
-          label: "Password",
-          id: "password2",
-          type: "password",
-          placeholder: "Confirm Password",
-          validation: {
-            html: [
-              {
-                attribute: "required",
-              },
-              {
-                attribute: "pattern",
-                value: "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
-              },
-            ],
-          },
-        },
-      ],
+      fields,
     });
+
+    const submit = (e: Event) => {
+      e.preventDefault();
+      console.log({ fields });
+    };
 
     return {
       state,
+      submit,
     };
   },
 });

@@ -1,4 +1,5 @@
 export interface Field {
+    value: string;
     label: string;
     id: string;
     title?: string;
