@@ -1,20 +1,24 @@
 <template>
-  <form id="form" @submit="submit">
+  <form ref="form" id="form" @submit="submit">
     <Input v-for="(field, i) in state.fields" :field="field" :key="i" />
     <button type="submit">Register</button>
   </form>
-  <div class="message-container">
-    <h3 id="message">Don't Hesitate!</h3>
+  <div class="message-container" :class="{ invalid: !state.isValid && state.message !== 'Do not hesitate!' }">
+    <h3 id="message">
+      {{ state.message }}
+    </h3>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import type { Field } from "../../interfaces";
 import Input from "../Input/Input.vue";
 import fields from "./form.data";
 
 interface State {
+  isValid: boolean;
+  message: string;
   fields: Field[];
 }
 
@@ -25,17 +29,27 @@ export default defineComponent({
   },
   setup() {
     const state = reactive<State>({
+      isValid: false,
+      message: "Do not hesitate!",
       fields,
     });
+    const form = ref<HTMLFormElement>();
 
     const submit = (e: Event) => {
       e.preventDefault();
-      console.log({ fields });
+
+      if (!form) return;
+
+      const isValid = form.value?.checkValidity();
+      state.message = "Please fill out all fields.";
+
+      console.log({ isValid, fields });
     };
 
     return {
       state,
       submit,
+      form,
     };
   },
 });
@@ -78,5 +92,10 @@ button:focus {
   display: flex;
   justify-content: center;
   color: black;
+}
+
+.invalid {
+  color: red;
+  border-color: red;
 }
 </style>

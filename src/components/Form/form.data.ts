@@ -20,7 +20,7 @@ export default [
         },
     },
     {
-        value: "",
+        value: "555-555-666",
         label: "Phone",
         id: "phone",
         type: "tel",
@@ -38,7 +38,7 @@ export default [
         },
     },
     {
-        value: "",
+        value: "test@test.com",
         label: "Email",
         id: "email",
         type: "email",
@@ -52,7 +52,7 @@ export default [
         },
     },
     {
-        value: "",
+        value: "https://www.google.com",
         label: "Website URL",
         id: "website",
         type: "url",
