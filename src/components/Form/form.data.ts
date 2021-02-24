@@ -1,6 +1,6 @@
 export const fields = [
     {
-        value: "SHANE",
+        value: "",
         label: "Full Name",
         id: "name",
         validation: {
@@ -20,7 +20,7 @@ export const fields = [
         },
     },
     {
-        value: "555-555-666",
+        value: "",
         label: "Phone",
         id: "phone",
         type: "tel",
@@ -38,7 +38,7 @@ export const fields = [
         },
     },
     {
-        value: "test@test.com",
+        value: "",
         label: "Email",
         id: "email",
         type: "email",
@@ -52,7 +52,7 @@ export const fields = [
         },
     },
     {
-        value: "https://www.google.com",
+        value: "",
         label: "Website URL",
         id: "website",
         type: "url",
@@ -66,7 +66,7 @@ export const fields = [
         },
     },
     {
-        value: "Password1",
+        value: "",
         label: "Password",
         id: "password1",
         type: "password",
@@ -85,7 +85,7 @@ export const fields = [
         },
     },
     {
-        value: "Password1",
+        value: "",
         label: "Password",
         id: "password2",
         type: "password",
