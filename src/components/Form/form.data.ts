@@ -1,4 +1,4 @@
-export default [
+export const fields = [
     {
         value: "SHANE",
         label: "Full Name",
@@ -66,7 +66,7 @@ export default [
         },
     },
     {
-        value: "",
+        value: "Password1",
         label: "Password",
         id: "password1",
         type: "password",
@@ -85,7 +85,7 @@ export default [
         },
     },
     {
-        value: "",
+        value: "Password1",
         label: "Password",
         id: "password2",
         type: "password",
@@ -100,6 +100,12 @@ export default [
                     value: "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
                 },
             ],
+            validate: function (): boolean {
+                const pwd1 = fields.find(f => f.id === 'password1')?.value;
+                const pwd2 = fields.find(f => f.id === 'password2')?.value;
+
+                return pwd1 === pwd2;
+            }
         },
     },
 ];

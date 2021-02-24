@@ -3,7 +3,13 @@
     <Input v-for="(field, i) in state.fields" :field="field" :key="i" />
     <button type="submit">Register</button>
   </form>
-  <div class="message-container" :class="{ invalid: !state.isValid && state.message !== 'Do not hesitate!' }">
+  <div
+    class="message-container"
+    :class="{
+      invalid: !state.isValid && state.message !== 'Do not hesitate!',
+      valid: state.isValid,
+    }"
+  >
     <h3 id="message">
       {{ state.message }}
     </h3>
@@ -14,7 +20,7 @@
 import { defineComponent, reactive, ref } from "vue";
 import type { Field } from "../../interfaces";
 import Input from "../Input/Input.vue";
-import fields from "./form.data";
+import { fields } from "./form.data";
 
 interface State {
   isValid: boolean;
@@ -40,8 +46,21 @@ export default defineComponent({
 
       if (!form) return;
 
-      const isValid = form.value?.checkValidity();
-      state.message = "Please fill out all fields.";
+      let isValid = form.value?.checkValidity();
+
+      for (const field of state.fields) {
+        if (field.validation?.validate) {
+          if (!field.validation?.validate() && isValid) isValid = false;
+        }
+      }
+
+      if (!isValid) {
+        state.isValid = false;
+        state.message = "Please fill out all fields.";
+      } else {
+        state.isValid = true;
+        state.message = "Form is valid congrats :)";
+      }
 
       console.log({ isValid, fields });
     };
@@ -97,5 +116,10 @@ button:focus {
 .invalid {
   color: red;
   border-color: red;
+}
+
+.valid {
+  color: green;
+  border-color: green;
 }
 </style>
